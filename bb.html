@@ -11,11 +11,12 @@
 
     <style>
         :root {
-            --bg-rose: #FAF0F0;
+            --rose-envelope-bg: #F3E3E2;
+            --rose-paper-texture: #FAF6F5;
             --rose-accent: #C48B8B;
             --rose-dark: #824B4B;
             --rose-text: #6E3B3B;
-            --rose-card: #FFFFFF;
+            --rose-seal: #B87676;
             --border-color: #E2C4C4;
         }
 
@@ -28,116 +29,218 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #E6D5D5;
+            background-color: #D3C2C2;
             color: var(--rose-text);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px 10px;
+            padding: 15px 10px;
         }
 
-        /* Cartão Fixo */
+        /* Container do Cartão / Celular */
         .card-container {
             width: 100%;
-            max-width: 410px;
-            background-color: var(--bg-rose);
+            max-width: 400px;
+            height: 740px;
+            background-color: var(--rose-paper-texture);
             border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(130, 75, 75, 0.15);
+            box-shadow: 0 12px 35px rgba(100, 50, 50, 0.2);
             position: relative;
             overflow: hidden;
             border: 1px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
         }
 
-        /* Ilustrações Florais Fixas em Aquarela */
+        /* Molduras Florais em Aquarela */
         .floral-svg {
             position: absolute;
             pointer-events: none;
-            z-index: 1;
-        }
-
-        .screen {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 35px 25px 30px;
-            position: relative;
             z-index: 2;
         }
 
-        /* Seção Principal */
-        .header-xv {
-            margin-top: 10px;
+        /* Controle de Páginas/Telas */
+        .page {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 30px 22px 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease;
+            z-index: 1;
+            overflow-y: auto;
+        }
+
+        .page.active {
+            opacity: 1;
+            visibility: visible;
+            z-index: 5;
+        }
+
+        /* ================= PÁGINA 1: CAPA (ENVELOPE ROSA) ================= */
+        #page-cover {
+            background-color: var(--rose-envelope-bg);
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Linha central que simula o envelope fechado */
+        .envelope-crease {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, rgba(196, 139, 139, 0.4), transparent);
+            z-index: 3;
+        }
+
+        /* Monograma D'água no fundo 'S' */
+        .watermark-s {
+            position: absolute;
+            bottom: 40px;
+            left: 20px;
+            font-family: 'Alex Brush', cursive;
+            font-size: 13rem;
+            color: rgba(196, 139, 139, 0.15);
+            pointer-events: none;
+            user-select: none;
+            line-height: 1;
+        }
+
+        /* Botão / Lacre de Cera Centralizado */
+        .seal-btn-wrapper {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            background: none;
+            border: none;
+            outline: none;
+        }
+
+        .seal-circular-text {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            pointer-events: none;
+            top: -25px;
+        }
+
+        .seal-circular-text text {
+            font-size: 10.5px;
+            font-family: 'Montserrat', sans-serif;
+            fill: var(--rose-dark);
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+
+        .wax-seal {
+            width: 95px;
+            height: 95px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 30%, #E2A3A2 0%, #B87676 50%, #7D3E3E 100%);
+            box-shadow: 0 6px 18px rgba(125, 62, 62, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.25s ease;
+        }
+
+        .seal-btn-wrapper:hover .wax-seal {
+            transform: scale(1.06);
+        }
+
+        .wax-seal span {
+            font-family: 'Alex Brush', cursive;
+            font-size: 3.2rem;
+            color: #FFF5F5;
+            text-shadow: 1px 2px 3px rgba(0,0,0,0.25);
+            margin-top: -4px;
+        }
+
+        /* ================= PÁGINA 2: CONVITE PRINCIPAL ================= */
+        #page-main {
+            background-color: var(--rose-paper-texture);
+            justify-content: flex-start;
+            gap: 8px;
+        }
+
+        .xv-header {
+            margin-top: 15px;
             text-align: center;
         }
 
         .xv-title {
             font-family: 'Cinzel', serif;
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 600;
             color: var(--rose-dark);
-            letter-spacing: 6px;
+            letter-spacing: 5px;
             line-height: 0.9;
         }
 
-        .anos-subtitle {
+        .anos-sub {
             font-family: 'Cormorant Garamond', serif;
             font-style: italic;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: var(--rose-accent);
-            letter-spacing: 4px;
+            letter-spacing: 3px;
         }
 
         .bible-quote {
             font-family: 'Cormorant Garamond', serif;
             font-style: italic;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #8C5C5C;
-            max-width: 290px;
+            max-width: 280px;
             text-align: center;
-            margin: 12px 0 6px;
             line-height: 1.3;
+            margin: 4px 0;
         }
 
         .name-sofia {
             font-family: 'Alex Brush', cursive;
-            font-size: 5rem;
+            font-size: 4.8rem;
             color: var(--rose-dark);
-            line-height: 1;
-            margin: 5px 0 10px;
-            text-align: center;
+            line-height: 0.95;
+            margin: 2px 0 6px;
         }
 
-        .invitation-body-text {
-            font-size: 0.82rem;
-            line-height: 1.6;
+        .body-text {
+            font-size: 0.78rem;
+            line-height: 1.5;
             color: var(--rose-text);
-            max-width: 320px;
+            max-width: 290px;
             text-align: center;
             font-weight: 400;
-            margin-bottom: 15px;
         }
 
-        /* Bloco da Data */
-        .date-badge-wrapper {
+        /* Bloco de Data */
+        .date-block {
             width: 100%;
-            max-width: 310px;
+            max-width: 290px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 10px 0;
+            margin: 8px 0;
         }
 
-        .date-day-header {
+        .date-day {
             font-family: 'Cinzel', serif;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             letter-spacing: 3px;
             color: var(--rose-dark);
             text-transform: uppercase;
-            margin-bottom: 6px;
+            margin-bottom: 3px;
         }
 
         .date-row {
@@ -145,7 +248,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
         }
 
         .date-row::before, .date-row::after {
@@ -157,128 +260,169 @@
 
         .date-month-year {
             font-family: 'Cinzel', serif;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             letter-spacing: 2px;
             color: var(--rose-dark);
             font-weight: 600;
         }
 
-        .date-number-box {
+        .date-num {
             font-family: 'Cinzel', serif;
-            font-size: 2.2rem;
+            font-size: 1.9rem;
             font-weight: 600;
             color: var(--rose-dark);
-            padding: 0 12px;
+            padding: 0 10px;
             border-left: 1px solid var(--rose-accent);
             border-right: 1px solid var(--rose-accent);
             line-height: 1;
         }
 
         .date-time {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--rose-dark);
             letter-spacing: 1px;
-            margin-top: 6px;
+            margin-top: 3px;
             font-weight: 500;
         }
 
-        .rsvp-warning {
-            font-size: 0.78rem;
+        .rsvp-text {
+            font-size: 0.73rem;
             color: var(--rose-dark);
             font-weight: 500;
-            margin: 12px 0 20px;
-            text-align: center;
+            margin-bottom: 6px;
         }
 
-        /* Botões Elegantes Estilo Pílula Retangular */
-        .action-buttons-list {
+        /* Botões Redondos de Interação */
+        .icons-row {
             display: flex;
-            flex-direction: column;
-            gap: 12px;
+            justify-content: space-around;
             width: 100%;
             max-width: 310px;
-            margin-bottom: 20px;
+            margin-top: 4px;
         }
 
-        .btn-pill {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            padding: 12px 20px;
-            background-color: var(--rose-card);
-            border: 1px solid var(--border-color);
-            border-radius: 30px;
-            color: var(--rose-dark);
-            text-decoration: none;
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            box-shadow: 0 2px 6px rgba(130, 75, 75, 0.06);
-            cursor: pointer;
-        }
-
-        .btn-pill i {
-            font-size: 1rem;
-            color: var(--rose-accent);
-        }
-
-        /* Seção de Presentes Integrada */
-        .gifts-section {
-            width: 100%;
-            max-width: 320px;
-            margin-top: 15px;
-            padding-top: 20px;
-            border-top: 1px dashed var(--border-color);
+        .icon-btn {
             display: flex;
             flex-direction: column;
             align-items: center;
+            text-decoration: none;
+            color: var(--rose-dark);
+            cursor: pointer;
+            width: 90px;
+        }
+
+        .icon-circle {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            border: 1.5px solid var(--rose-accent);
+            box-shadow: 0 4px 10px rgba(196, 139, 139, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            color: var(--rose-dark);
+            margin-bottom: 5px;
+            transition: transform 0.2s ease;
+        }
+
+        .icon-btn:hover .icon-circle {
+            transform: translateY(-3px);
+        }
+
+        .icon-label {
+            font-size: 0.63rem;
+            font-weight: 600;
+            text-align: center;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hint-text {
+            font-size: 0.68rem;
+            color: #9A6B6B;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 4px;
+        }
+
+        .bottom-tag {
+            margin-top: auto;
+            background-color: #F3E3E2;
+            border: 1px solid var(--rose-accent);
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 1.5px;
+            color: var(--rose-dark);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* ================= PÁGINA 3: SUGESTÃO DE PRESENTES ================= */
+        #page-gifts {
+            background-color: var(--rose-paper-texture);
+            justify-content: flex-start;
+            padding-top: 40px;
         }
 
         .gifts-title {
             font-family: 'Alex Brush', cursive;
-            font-size: 3.2rem;
+            font-size: 3.5rem;
             color: var(--rose-dark);
+            line-height: 1;
             margin-bottom: 15px;
-            text-align: center;
         }
 
-        .gift-item-card {
+        .gifts-grid {
             width: 100%;
-            background: var(--rose-card);
+            max-width: 310px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 52vh;
+            overflow-y: auto;
+            padding-right: 2px;
+        }
+
+        .gift-card {
+            background: #FFFFFF;
             border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 12px 15px;
-            margin-bottom: 10px;
+            border-radius: 12px;
+            padding: 12px;
             display: flex;
             align-items: center;
             gap: 12px;
+            box-shadow: 0 3px 8px rgba(196, 139, 139, 0.1);
             text-align: left;
         }
 
-        .gift-item-card i {
-            font-size: 1.2rem;
-            color: var(--rose-accent);
-            width: 24px;
-            text-align: center;
+        .gift-card .icon-circle {
+            width: 42px;
+            height: 42px;
+            min-width: 42px;
+            font-size: 1rem;
+            margin-bottom: 0;
+            box-shadow: none;
         }
 
-        .gift-item-info {
+        .gift-info {
             display: flex;
             flex-direction: column;
         }
 
-        .gift-item-title {
+        .gift-info-title {
             font-size: 0.8rem;
             font-weight: 600;
             color: var(--rose-dark);
         }
 
-        .gift-item-desc {
-            font-size: 0.73rem;
+        .gift-info-desc {
+            font-size: 0.72rem;
             color: var(--rose-text);
             margin-top: 2px;
         }
@@ -286,11 +430,11 @@
         .copy-pix-btn {
             margin-top: 6px;
             background: var(--rose-accent);
-            color: #FFF;
+            color: #FFFFFF;
             border: none;
             padding: 5px 12px;
             border-radius: 15px;
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             font-weight: 600;
             cursor: pointer;
             display: inline-flex;
@@ -299,18 +443,19 @@
             width: fit-content;
         }
 
-        .bottom-tag-badge {
-            margin-top: 20px;
-            background-color: #F3E4E4;
+        .back-btn {
+            margin-top: auto;
+            background: #F3E3E2;
             border: 1px solid var(--rose-accent);
-            padding: 8px 24px;
-            border-radius: 20px;
-            font-family: 'Cinzel', serif;
-            font-size: 0.75rem;
-            letter-spacing: 1.5px;
             color: var(--rose-dark);
+            padding: 8px 22px;
+            border-radius: 20px;
+            font-size: 0.75rem;
             font-weight: 600;
-            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
     </style>
 </head>
@@ -318,7 +463,7 @@
 
     <div class="card-container">
 
-        <svg class="floral-svg" style="top:-5px; left:-5px; width:200px; height:200px;" viewBox="0 0 200 200">
+        <svg class="floral-svg" style="top:-5px; left:-5px; width:210px; height:210px;" viewBox="0 0 200 200">
             <g opacity="0.9">
                 <path d="M 25,90 C 5,65 0,35 35,20 C 48,42 38,75 25,90 Z" fill="#9CB096" opacity="0.65"/>
                 <path d="M 85,25 C 65,5 35,0 20,35 C 42,48 75,38 85,25 Z" fill="#B3C4AE" opacity="0.6"/>
@@ -341,102 +486,162 @@
             </g>
         </svg>
 
-        <div class="screen">
-            <div class="header-xv">
+        <div class="page active" id="page-cover">
+            <div class="watermark-s">S</div>
+            <div class="envelope-crease"></div>
+
+            <button class="seal-btn-wrapper" onclick="showPage('page-main')">
+                <svg class="seal-circular-text" viewBox="0 0 150 150">
+                    <path id="circlePath" d="M 75, 75 m -52, 0 a 52,52 0 1,1 104,0 a 52,52 0 1,1 -104,0" fill="none"/>
+                    <text>
+                        <textPath href="#circlePath" startOffset="50%" text-anchor="middle">
+                            • clique para abrir •
+                        </textPath>
+                    </text>
+                </svg>
+
+                <div class="wax-seal">
+                    <span>S</span>
+                </div>
+            </button>
+        </div>
+
+        <div class="page" id="page-main">
+            <div class="xv-header">
                 <h2 class="xv-title">XV</h2>
-                <span class="anos-subtitle">anos</span>
+                <span class="anos-sub">anos</span>
             </div>
 
             <p class="bible-quote">"Tudo tem o seu tempo determinado."<br>(Eclesiastes 3:1)</p>
 
             <h1 class="name-sofia">Sofia</h1>
 
-            <p class="invitation-body-text">
-                Sofia, um nome que significa sabedoria e graça, celebra um sonho e convida você para fazer parte desse momento especial.
+            <p class="body-text">
+                Sofia, um nome que significa sabedoria e graça, celebra um sonho e convida você para fazer parte desse momento.
             </p>
 
-            <div class="date-badge-wrapper">
-                <div class="date-day-header">SÁBADO</div>
+            <div class="date-block">
+                <div class="date-day">SÁBADO</div>
                 <div class="date-row">
                     <span class="date-month-year">SETEMBRO</span>
-                    <span class="date-number-box">05</span>
+                    <span class="date-num">05</span>
                     <span class="date-month-year">2026</span>
                 </div>
                 <div class="date-time">19h00</div>
             </div>
 
-            <p class="rsvp-warning">É imprescindível confirmar presença até dia 20/08.</p>
+            <p class="rsvp-text">É坑imprescindível confirmar presença até dia 20/08.</p>
 
-            <div class="action-buttons-list">
-                <a href="https://wa.me/5551992537196?text=Ol%C3%A1!%20Gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20no%20anivers%C3%A1rio%20de%2015%20anos%20da%20Sofia." target="_blank" class="btn-pill">
-                    <i class="fa-regular fa-heart"></i>
-                    <span>Confirmar Presença</span>
+            <div class="icons-row">
+                <div class="icon-btn" onclick="showPage('page-gifts')">
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-gift"></i>
+                    </div>
+                    <span class="icon-label">Sugestão de Presentes</span>
+                </div>
+
+                <a href="https://wa.me/5551992537196?text=Ol%C3%A1!%20Gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20no%20anivers%C3%A1rio%20de%2015%20anos%20da%20Sofia." target="_blank" class="icon-btn">
+                    <div class="icon-circle">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <span class="icon-label">Confirmar Presença</span>
                 </a>
 
-                <a href="https://www.google.com/maps/place/R.+Dr.+Barcelos,+2434+-+Tristeza,+Porto+Alegre+-+RS,+91910-251/@-30.0968039,-51.2332125,14.74z/data=!4m6!3m5!1s0x95198269bf2675af:0x51b9db561716d04b!8m2!3d-30.1007585!4d-51.2353545!16s%2Fg%2F11c2931s89?entry=ttu&g_ep=EgoyMDI2MDcxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn-pill">
-                    <i class="fa-solid fa-map-location-dot"></i>
-                    <span>Excelência Eventos (Local)</span>
+                <a href="https://www.google.com/maps/place/R.+Dr.+Barcelos,+2434+-+Tristeza,+Porto+Alegre+-+RS,+91910-251/@-30.0968039,-51.2332125,14.74z/data=!4m6!3m5!1s0x95198269bf2675af:0x51b9db561716d04b!8m2!3d-30.1007585!4d-51.2353545!16s%2Fg%2F11c2931s89?entry=ttu&g_ep=EgoyMDI2MDcxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="icon-btn">
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </div>
+                    <span class="icon-label">Excelência Eventos</span>
                 </a>
             </div>
 
-            <div class="gifts-section">
-                <h2 class="gifts-title">Sugestão de Presentes</h2>
+            <div class="hint-text">
+                <i class="fa-solid fa-hand-pointer"></i>
+                <span>Clique nos ícones para interagir.</span>
+            </div>
 
-                <div class="gift-item-card">
-                    <i class="fa-solid fa-qrcode"></i>
-                    <div class="gift-item-info">
-                        <span class="gift-item-title">Pix (Chave CPF)</span>
-                        <span class="gift-item-desc">CPF: 600.675.520-30</span>
+            <div class="bottom-tag">
+                Seja pontual!
+            </div>
+        </div>
+
+        <div class="page" id="page-gifts">
+            <h2 class="gifts-title">Sugestão de presente</h2>
+
+            <div class="gifts-grid">
+                <div class="gift-card">
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-qrcode"></i>
+                    </div>
+                    <div class="gift-info">
+                        <span class="gift-info-title">Pix (Chave CPF)</span>
+                        <span class="gift-info-desc">CPF: 600.675.520-30</span>
                         <button class="copy-pix-btn" onclick="copyPixCode()">
                             <i class="fa-regular fa-copy"></i> Copiar Chave Pix
                         </button>
                     </div>
                 </div>
 
-                <div class="gift-item-card">
-                    <i class="fa-solid fa-mask"></i>
-                    <div class="gift-item-info">
-                        <span class="gift-item-title">Produtos da Marvel</span>
-                        <span class="gift-item-desc">Funko pop, pelúcias, almofadas, camisetas e moletons (M)</span>
+                <div class="gift-card">
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-mask"></i>
+                    </div>
+                    <div class="gift-info">
+                        <span class="gift-info-title">Produtos da Marvel</span>
+                        <span class="gift-info-desc">Funko pop, pelúcias, almofadas, camisetas e moletons (M)</span>
                     </div>
                 </div>
 
-                <div class="gift-item-card">
-                    <i class="fa-solid fa-shoe-prints"></i>
-                    <div class="gift-item-info">
-                        <span class="gift-item-title">Tênis 34/35</span>
-                        <span class="gift-item-desc">Modelo Samba</span>
+                <div class="gift-card">
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-shoe-prints"></i>
+                    </div>
+                    <div class="gift-info">
+                        <span class="gift-info-title">Tênis 34/35</span>
+                        <span class="gift-info-desc">Modelo Samba</span>
                     </div>
                 </div>
 
-                <div class="gift-item-card">
-                    <i class="fa-solid fa-icons"></i>
-                    <div class="gift-item-info">
-                        <span class="gift-item-title">Crocs com pingente</span>
-                        <span class="gift-item-desc">Tamanho 34/35</span>
+                <div class="gift-card">
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-icons"></i>
+                    </div>
+                    <div class="gift-info">
+                        <span class="gift-info-title">Crocs com pingente</span>
+                        <span class="gift-info-desc">Tamanho 34/35</span>
                     </div>
                 </div>
 
-                <div class="gift-item-card">
-                    <i class="fa-solid fa-spray-can-sparkles"></i>
-                    <div class="gift-item-info">
-                        <span class="gift-item-title">Perfumaria</span>
-                        <span class="gift-item-desc">O Boticário</span>
+                <div class="gift-card">
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-spray-can-sparkles"></i>
+                    </div>
+                    <div class="gift-info">
+                        <span class="gift-info-title">Perfumaria</span>
+                        <span class="gift-info-desc">O Boticário</span>
                     </div>
                 </div>
             </div>
 
-            <div class="bottom-tag-badge">
-                Seja pontual!
-            </div>
+            <button class="back-btn" onclick="showPage('page-main')">
+                <i class="fa-solid fa-arrow-left"></i> Voltar ao convite
+            </button>
         </div>
 
     </div>
 
     <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+        }
+
         function copyPixCode() {
             navigator.clipboard.writeText('60067552030');
-            alert('Chave Pix copiada com sucesso!');
+            alert('Chave Pix (CPF: 60067552030) copiada com sucesso!');
         }
     </script>
 </body>
