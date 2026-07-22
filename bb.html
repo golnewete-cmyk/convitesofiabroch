@@ -3,24 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Convite de 15 Anos - Sofia</title>
-    <!-- Google Fonts -->
+    <title>Convite 15 Anos - Sofia</title>
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         :root {
-            --rose-gold: #C58B88;
-            --rose-gold-dark: #9E6461;
-            --rose-gold-light: #E8C5C3;
-            --soft-pink-bg: #F9ECEC;
-            --card-bg: #FCF8F8;
-            --text-main: #5C4342;
-            --text-muted: #8A6E6D;
-            --accent-gold: #B8860B;
+            --rose-bg-envelope: #F4E3E2;
+            --rose-accent: #C48B8B;
+            --rose-dark: #935B5B;
+            --rose-text: #824B4B;
+            --card-white: #FCF9F9;
+            --gold-subtle: #D4AF37;
         }
 
         * {
@@ -32,79 +30,55 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #F3E5E5;
-            background-image: radial-gradient(#E5CFCF 1px, transparent 1px);
-            background-size: 20px 20px;
-            color: var(--text-main);
+            background-color: #EFE4E4;
+            background-image: radial-gradient(#D8C2C2 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: var(--rose-text);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow-x: hidden;
-            position: relative;
-            padding: 15px 0;
+            padding: 20px 10px;
         }
 
-        /* Container Principal do Convite (Manequim/Cartão Mobile) */
-        .app-container {
+        /* Container principal estilo Cartão Físico */
+        .card-container {
             width: 100%;
-            max-width: 420px;
-            min-height: 100vh;
-            background: var(--card-bg);
-            box-shadow: 0 15px 40px rgba(158, 100, 97, 0.2);
+            max-width: 410px;
+            min-height: 780px;
+            background: var(--card-white);
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(130, 75, 75, 0.18), 0 2px 10px rgba(0,0,0,0.05);
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(196, 139, 139, 0.25);
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border: 1px solid rgba(197, 139, 136, 0.3);
         }
 
-        @media (min-height: 650px) and (min-width: 450px) {
-            .app-container {
-                min-height: 800px;
-                border-radius: 20px;
-            }
-        }
-
-        /* Flores e Elementos Decorativos Fixos estilo Aquarela Rose Gold */
-        .floral-corner {
+        /* SVG Floral Reutilizável de Alta Fidelidade (Ramos de flores rosas em tom pastel) */
+        .floral-svg {
             position: absolute;
             pointer-events: none;
-            z-index: 1;
+            z-index: 2;
         }
 
-        .floral-top-left {
-            top: -10px;
-            left: -10px;
-            width: 180px;
-        }
-
-        .floral-bottom-right {
-            bottom: -10px;
-            right: -10px;
-            width: 180px;
-            transform: rotate(180deg);
-        }
-
-        /* Estrutura das Páginas */
+        /* Telas */
         .screen {
             width: 100%;
             height: 100%;
+            position: absolute;
+            inset: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: absolute;
-            inset: 0;
-            padding: 40px 25px;
+            justify-content: space-between;
+            padding: 35px 25px 25px;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-            transform: scale(0.97);
-            z-index: 2;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: scale(0.98);
+            z-index: 3;
             overflow-y: auto;
         }
 
@@ -112,489 +86,623 @@
             opacity: 1;
             visibility: visible;
             transform: scale(1);
-            z-index: 3;
+            z-index: 5;
         }
 
-        /* PÁGINA 1: CAPA (Envelope / Lacre Rose Gold) */
+        /* ================= PÁGINA 1: ENVELOPE (CAPA) ================= */
         #screen-cover {
-            background: linear-gradient(180deg, #F9EDED 0%, #FAF0F0 100%);
+            background-color: #F5E5E4;
+            background-image: 
+                radial-gradient(rgba(255,255,255,0.4) 1px, transparent 0),
+                linear-gradient(to right, rgba(196,139,139,0.08) 1px, transparent 1px);
+            background-size: 20px 20px, 100% 100%;
+            justify-content: center;
         }
 
-        /* Linha Central do Envelope */
-        .envelope-seam {
+        /* Marca d'água da Monograma "S" no envelope */
+        .watermark-monogram {
+            position: absolute;
+            bottom: 40px;
+            left: 20px;
+            font-family: 'Alex Brush', cursive;
+            font-size: 13rem;
+            color: rgba(196, 139, 139, 0.12);
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+            z-index: 1;
+        }
+
+        /* Linha central do envelope de duas abas */
+        .envelope-center-line {
             position: absolute;
             top: 0;
             bottom: 0;
             left: 50%;
             width: 1px;
-            background: rgba(197, 139, 136, 0.3);
-            z-index: 1;
+            background: linear-gradient(to bottom, rgba(196,139,139,0.1), rgba(196,139,139,0.4), rgba(196,139,139,0.1));
+            z-index: 2;
         }
 
-        .cover-monogram-sub {
-            font-family: 'Cinzel', serif;
-            letter-spacing: 5px;
-            font-size: 0.85rem;
-            color: var(--rose-gold-dark);
-            text-transform: uppercase;
-            margin-top: 15px;
-            margin-bottom: 35px;
-        }
-
-        /* Lacre de Cera Rose Gold */
-        .wax-seal-btn {
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle at 35% 35%, #D8A09D 0%, #B87673 60%, #8C4E4B 100%);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 8px 20px rgba(140, 78, 75, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.4);
-            cursor: pointer;
+        /* Lacre de Cera com texto circular */
+        .wax-seal-wrapper {
             position: relative;
-            z-index: 4;
-            transition: transform 0.3s ease;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            margin-bottom: 30px;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin: auto 0;
         }
 
-        .wax-seal-btn:hover {
-            transform: scale(1.06);
+        .seal-curved-text {
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            animation: rotateText 20s linear infinite;
+            pointer-events: none;
         }
 
-        .wax-seal-inner {
-            width: 78px;
-            height: 78px;
+        .seal-curved-text text {
+            font-size: 10.5px;
+            font-family: 'Montserrat', sans-serif;
+            fill: var(--rose-dark);
+            letter-spacing: 2px;
+            font-weight: 500;
+            text-transform: lowercase;
+        }
+
+        @keyframes rotateText {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .wax-seal-3d {
+            width: 96px;
+            height: 96px;
             border-radius: 50%;
-            border: 1.5px dashed rgba(255, 255, 255, 0.7);
+            background: radial-gradient(circle at 35% 30%, #EABBB9 0%, #C48381 45%, #8E4C4B 85%, #6E3837 100%);
+            box-shadow: 
+                0 10px 25px rgba(110, 56, 55, 0.4),
+                inset 0 3px 6px rgba(255, 255, 255, 0.6),
+                inset 0 -4px 8px rgba(0, 0, 0, 0.3);
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 2.5rem;
-            color: #FFF;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+            border: 3px solid rgba(234, 187, 185, 0.5);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .click-hint {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
-            color: var(--rose-gold-dark);
+        .wax-seal-wrapper:hover .wax-seal-3d {
+            transform: scale(1.08);
+        }
+
+        .wax-seal-inner-monogram {
+            font-family: 'Alex Brush', cursive;
+            font-size: 3.2rem;
+            color: #FFF5F5;
+            text-shadow: 1px 2px 4px rgba(90, 35, 35, 0.6), -1px -1px 2px rgba(255,255,255,0.4);
+            transform: translateY(-2px);
+        }
+
+        .click-open-text {
+            margin-top: 25px;
+            font-size: 0.82rem;
+            letter-spacing: 1.5px;
+            color: var(--rose-dark);
             font-weight: 500;
             display: flex;
             align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            z-index: 4;
-            letter-spacing: 0.5px;
+            gap: 6px;
+            text-transform: uppercase;
         }
 
-        /* PÁGINA 2: CONVITE PRINCIPAL */
-        .roman-xv {
+        /* ================= PÁGINA 2: CONVITE PRINCIPAL ================= */
+        #screen-main {
+            background-color: var(--card-white);
+            background-image: radial-gradient(rgba(196,139,139,0.06) 1px, transparent 0);
+            background-size: 16px 16px;
+            justify-content: flex-start;
+            gap: 12px;
+        }
+
+        .header-xv {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .xv-title {
             font-family: 'Cinzel', serif;
-            font-size: 2.2rem;
-            font-weight: 400;
+            font-size: 2.8rem;
+            font-weight: 500;
+            color: var(--rose-dark);
             letter-spacing: 6px;
-            color: var(--rose-gold-dark);
-            line-height: 1;
-            margin-bottom: 2px;
+            line-height: 0.9;
         }
 
-        .roman-anos {
-            font-family: 'Playfair Display', serif;
+        .anos-subtitle {
+            font-family: 'Cormorant Garamond', serif;
             font-style: italic;
-            font-size: 1.1rem;
-            color: var(--rose-gold);
-            letter-spacing: 3px;
-            margin-bottom: 12px;
+            font-size: 1.4rem;
+            color: var(--rose-accent);
+            letter-spacing: 4px;
+            margin-top: 2px;
         }
 
-        .main-name {
-            font-family: 'Great Vibes', cursive;
-            font-size: 4rem;
-            color: var(--rose-gold-dark);
-            line-height: 1.1;
-            margin-bottom: 12px;
+        .bible-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.85rem;
+            color: #9E7474;
+            max-width: 280px;
+            margin: 4px 0 6px;
+            line-height: 1.3;
+        }
+
+        .name-sofia {
+            font-family: 'Alex Brush', cursive;
+            font-size: 4.8rem;
+            color: var(--rose-dark);
+            line-height: 1;
+            margin: 2px 0 6px;
             font-weight: normal;
         }
 
-        .invitation-text {
-            font-family: 'Montserrat', sans-serif;
+        .invitation-body-text {
             font-size: 0.82rem;
-            line-height: 1.6;
-            color: var(--text-muted);
-            max-width: 310px;
-            margin-bottom: 20px;
+            line-height: 1.55;
+            color: #7A5353;
+            max-width: 300px;
+            font-weight: 400;
+            margin-bottom: 8px;
         }
 
-        .date-container {
+        /* Bloco de Data Fiel à foto */
+        .date-badge-wrapper {
+            width: 100%;
+            max-width: 310px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 6px 0;
+        }
+
+        .date-day-header {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            color: var(--rose-dark);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .date-row {
             width: 100%;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             gap: 15px;
-            margin-bottom: 18px;
-            padding: 10px 0;
-            border-top: 1px solid rgba(197, 139, 136, 0.3);
-            border-bottom: 1px solid rgba(197, 139, 136, 0.3);
+            position: relative;
         }
 
-        .date-text {
+        .date-row::before, .date-row::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(196, 139, 139, 0.4);
+        }
+
+        .date-month-year {
             font-family: 'Cinzel', serif;
-            font-size: 0.95rem;
-            color: var(--rose-gold-dark);
-            letter-spacing: 1px;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            color: var(--rose-dark);
             font-weight: 600;
-            text-transform: uppercase;
         }
 
-        .date-day-number {
+        .date-number-box {
             font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--rose-gold-dark);
-            padding: 0 10px;
-            border-left: 1px solid var(--rose-gold-light);
-            border-right: 1px solid var(--rose-gold-light);
-        }
-
-        .rsvp-deadline {
-            font-size: 0.78rem;
-            color: var(--rose-gold-dark);
-            font-weight: 500;
-            margin-bottom: 22px;
-        }
-
-        /* Grade dos Botões de Ação */
-        .action-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            width: 100%;
-            max-width: 310px;
-            margin-bottom: 18px;
-        }
-
-        .action-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
-        .action-card {
-            background: #FFF;
-            border: 1px solid var(--rose-gold-light);
-            border-radius: 14px;
-            padding: 12px 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-            text-decoration: none;
-            color: var(--text-main);
-            box-shadow: 0 3px 10px rgba(197, 139, 136, 0.08);
-            transition: all 0.25 ease;
-            cursor: pointer;
-        }
-
-        .action-card:hover {
-            transform: translateY(-2px);
-            border-color: var(--rose-gold);
-            box-shadow: 0 6px 15px rgba(197, 139, 136, 0.15);
-        }
-
-        .icon-circle {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            background: var(--soft-pink-bg);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: var(--rose-gold-dark);
-            font-size: 1.1rem;
-            border: 1px solid rgba(197, 139, 136, 0.3);
-        }
-
-        .action-card span {
-            font-size: 0.75rem;
+            font-size: 2.2rem;
             font-weight: 600;
-            color: var(--text-main);
-        }
-
-        .action-card-full {
-            flex-direction: row;
-            justify-content: center;
-            gap: 10px;
-            padding: 10px 15px;
-        }
-
-        .punctual-notice {
-            font-family: 'Cinzel', serif;
-            font-size: 0.82rem;
-            color: var(--rose-gold-dark);
-            letter-spacing: 1.5px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        /* PÁGINA 3: SUGESTÃO DE PRESENTES */
-        .gift-title {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3.2rem;
-            color: var(--rose-gold-dark);
-            margin-bottom: 15px;
+            color: var(--rose-dark);
+            padding: 0 12px;
+            border-left: 1px solid var(--rose-accent);
+            border-right: 1px solid var(--rose-accent);
             line-height: 1;
         }
 
-        .gift-list {
+        .date-time {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            color: var(--rose-dark);
+            letter-spacing: 1px;
+            margin-top: 6px;
+            font-weight: 500;
+        }
+
+        .rsvp-warning {
+            font-size: 0.78rem;
+            color: var(--rose-dark);
+            font-weight: 500;
+            margin: 6px 0 10px;
+        }
+
+        /* Fileira dos 3 Ícones Circulares estilo Foto */
+        .interactive-icons-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
             width: 100%;
-            max-width: 330px;
+            max-width: 320px;
+            margin-top: 8px;
+            gap: 8px;
+        }
+
+        .icon-btn-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            text-decoration: none;
+            color: var(--rose-text);
+            cursor: pointer;
+            transition: transform 0.25s ease;
+        }
+
+        .icon-btn-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .round-icon-badge {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FFF 0%, #F8EAEA 100%);
+            border: 1.5px solid var(--rose-accent);
+            box-shadow: 0 4px 12px rgba(196, 139, 139, 0.18);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--rose-dark);
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .icon-btn-label {
+            font-size: 0.68rem;
+            font-weight: 600;
+            text-align: center;
+            line-height: 1.25;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--rose-dark);
+            max-width: 90px;
+        }
+
+        .interaction-hint {
+            font-size: 0.72rem;
+            color: #A07575;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        /* Badge do Traje / Pontualidade */
+        .bottom-tag-badge {
+            margin-top: auto;
+            margin-bottom: 5px;
+            background-color: #F6ECEB;
+            border: 1px solid var(--rose-accent);
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            color: var(--rose-dark);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* ================= PÁGINA 3: LISTA DE PRESENTES ================= */
+        #screen-gifts {
+            background-color: var(--card-white);
+            justify-content: flex-start;
+            padding-top: 45px;
+        }
+
+        .gifts-header-title {
+            font-family: 'Alex Brush', cursive;
+            font-size: 3.8rem;
+            color: var(--rose-dark);
+            line-height: 1;
+            margin-bottom: 18px;
+        }
+
+        .gift-cards-container {
+            width: 100%;
+            max-width: 320px;
             display: flex;
             flex-direction: column;
             gap: 10px;
-            margin-bottom: 20px;
-            max-height: 52vh;
+            max-height: 54vh;
             overflow-y: auto;
-            padding-right: 2px;
+            padding-right: 4px;
         }
 
-        .gift-item {
+        .gift-box-card {
             background: #FFF;
-            border: 1px solid var(--rose-gold-light);
+            border: 1px solid rgba(196, 139, 139, 0.35);
             border-radius: 12px;
-            padding: 10px 14px;
+            padding: 12px;
             display: flex;
             align-items: center;
             gap: 12px;
+            box-shadow: 0 3px 8px rgba(196, 139, 139, 0.08);
             text-align: left;
-            box-shadow: 0 2px 8px rgba(197, 139, 136, 0.05);
         }
 
-        .gift-details {
+        .gift-box-card .round-icon-badge {
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+
+        .gift-card-info {
             display: flex;
             flex-direction: column;
-            flex-grow: 1;
+            flex: 1;
         }
 
-        .gift-name {
+        .gift-card-title {
             font-size: 0.82rem;
             font-weight: 600;
-            color: var(--text-main);
+            color: var(--rose-dark);
         }
 
-        .gift-sub {
-            font-size: 0.72rem;
-            color: var(--text-muted);
+        .gift-card-desc {
+            font-size: 0.73rem;
+            color: #8C6262;
             margin-top: 2px;
             line-height: 1.3;
         }
 
-        /* Botão Vazio do PIX */
-        .pix-button-empty {
+        .copy-pix-btn {
+            margin-top: 6px;
+            background: var(--rose-accent);
+            color: #FFF;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            background: var(--rose-gold);
-            color: #FFF;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 0.72rem;
-            font-weight: 600;
-            text-decoration: none;
-            margin-top: 6px;
+            gap: 5px;
             width: fit-content;
-            transition: background 0.2s;
-            border: none;
-            cursor: pointer;
+            text-decoration: none;
         }
 
-        .pix-button-empty:hover {
-            background: var(--rose-gold-dark);
-        }
-
-        .back-btn {
-            background: linear-gradient(135deg, var(--rose-gold), var(--rose-gold-dark));
+        .back-nav-btn {
+            margin-top: auto;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--rose-accent), var(--rose-dark));
             color: #FFF;
             border: none;
-            padding: 11px 26px;
-            border-radius: 20px;
-            font-weight: 600;
+            padding: 10px 24px;
+            border-radius: 25px;
             font-size: 0.8rem;
+            font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(158, 100, 97, 0.25);
+            box-shadow: 0 4px 12px rgba(147, 91, 91, 0.25);
             display: flex;
             align-items: center;
             gap: 8px;
-            letter-spacing: 0.5px;
-        }
-
-        .back-btn:hover {
-            opacity: 0.95;
         }
     </style>
 </head>
 <body>
 
-    <!-- Container Principal (Convite) -->
-    <div class="app-container">
-        
-        <!-- Ilustrações Florais em Aquarela Rose (Substituindo ícones/borboletas animadas) -->
-        <svg class="floral-corner floral-top-left" viewBox="0 0 200 200" fill="none">
-            <!-- Flores e folhas aquarela estilizadas em tons Rose/Dusty Pink -->
-            <path d="M10 10 Q 60 20, 90 60 Q 40 80, 10 10 Z" fill="#E8C5C3" opacity="0.6"/>
-            <path d="M40 0 Q 80 40, 70 90 Q 20 60, 40 0 Z" fill="#D8A09D" opacity="0.5"/>
-            <circle cx="30" cy="30" r="25" fill="#C58B88" opacity="0.4"/>
-            <circle cx="60" cy="20" r="18" fill="#E8C5C3" opacity="0.7"/>
-            <circle cx="20" cy="60" r="20" fill="#B87673" opacity="0.3"/>
-            <path d="M70 70 C 100 100, 130 80, 140 50" stroke="#9E6461" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.5"/>
+    <div class="card-container">
+
+        <!-- SVG FLORAL 1: Canto Superior Esquerdo (Flores Rosa Aquarela estilo Imagem) -->
+        <svg class="floral-svg" style="top:-5px; left:-5px; width:210px; height:210px;" viewBox="0 0 200 200">
+            <g opacity="0.85">
+                <!-- Folhas verdes suaves -->
+                <path d="M 30,80 C 10,60 5,30 40,20 C 50,40 40,70 30,80 Z" fill="#90A48A" opacity="0.6"/>
+                <path d="M 80,30 C 60,10 30,5 20,40 C 40,50 70,40 80,30 Z" fill="#A5B8A0" opacity="0.5"/>
+                <!-- Flor Principal Grande -->
+                <circle cx="55" cy="55" r="32" fill="#E8C2C0" opacity="0.7"/>
+                <circle cx="50" cy="50" r="26" fill="#DFAEB0" opacity="0.8"/>
+                <circle cx="52" cy="52" r="18" fill="#C48B8B" opacity="0.9"/>
+                <circle cx="52" cy="52" r="8" fill="#824B4B" opacity="0.8"/>
+                <!-- Pétalas externas estendidas -->
+                <path d="M 55,20 C 75,5 95,20 85,45 C 70,35 60,25 55,20 Z" fill="#F0D2D0"/>
+                <path d="M 20,55 C 5,75 20,95 45,85 C 35,70 25,60 20,55 Z" fill="#E8C2C0"/>
+                <!-- Botões secundários -->
+                <circle cx="105" cy="30" r="14" fill="#E8C2C0"/>
+                <circle cx="105" cy="30" r="8" fill="#C48B8B"/>
+                <circle cx="30" cy="105" r="12" fill="#DFAEB0"/>
+            </g>
         </svg>
 
-        <svg class="floral-corner floral-bottom-right" viewBox="0 0 200 200" fill="none">
-            <path d="M10 10 Q 60 20, 90 60 Q 40 80, 10 10 Z" fill="#E8C5C3" opacity="0.6"/>
-            <path d="M40 0 Q 80 40, 70 90 Q 20 60, 40 0 Z" fill="#D8A09D" opacity="0.5"/>
-            <circle cx="30" cy="30" r="25" fill="#C58B88" opacity="0.4"/>
-            <circle cx="60" cy="20" r="18" fill="#E8C5C3" opacity="0.7"/>
-            <circle cx="20" cy="60" r="20" fill="#B87673" opacity="0.3"/>
-            <path d="M70 70 C 100 100, 130 80, 140 50" stroke="#9E6461" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.5"/>
+        <!-- SVG FLORAL 2: Canto Inferior Direito -->
+        <svg class="floral-svg" style="bottom:-5px; right:-5px; width:200px; height:200px; transform: rotate(180deg);" viewBox="0 0 200 200">
+            <g opacity="0.85">
+                <path d="M 30,80 C 10,60 5,30 40,20 C 50,40 40,70 30,80 Z" fill="#90A48A" opacity="0.6"/>
+                <circle cx="55" cy="55" r="32" fill="#E8C2C0" opacity="0.7"/>
+                <circle cx="50" cy="50" r="26" fill="#DFAEB0" opacity="0.8"/>
+                <circle cx="52" cy="52" r="18" fill="#C48B8B" opacity="0.9"/>
+                <circle cx="52" cy="52" r="8" fill="#824B4B" opacity="0.8"/>
+                <circle cx="105" cy="30" r="14" fill="#E8C2C0"/>
+            </g>
         </svg>
 
-        <!-- PÁGINA 1: CAPA COM LACRE -->
+        <!-- ================= PÁGINA 1: CAPA COM LACRE ================= -->
         <div class="screen active" id="screen-cover">
-            <div class="envelope-seam"></div>
+            <!-- Marca d'água Monograma -->
+            <div class="watermark-monogram">S</div>
+            <div class="envelope-center-line"></div>
 
-            <div class="wax-seal-btn" onclick="goToScreen('screen-main')">
-                <div class="wax-seal-inner">S</div>
+            <!-- Lacre de cera com texto circular em curva -->
+            <div class="wax-seal-wrapper" onclick="goToScreen('screen-main')">
+                <svg class="seal-curved-text" viewBox="0 0 160 160">
+                    <path id="textPath" d="M 80, 80 m -60, 0 a 60,60 0 1,1 120,0 a 60,60 0 1,1 -120,0" fill="none"/>
+                    <text>
+                        <textPath href="#textPath" startOffset="50%" text-anchor="middle">
+                            • clique para abrir •
+                        </textPath>
+                    </text>
+                </svg>
+
+                <div class="wax-seal-3d">
+                    <span class="wax-seal-inner-monogram">S</span>
+                </div>
             </div>
 
-            <div class="cover-monogram-sub">Sofia</div>
-
-            <div class="click-hint" onclick="goToScreen('screen-main')">
-                <span>Clique aqui</span>
-                <i class="fa-solid fa-hand-pointer"></i>
+            <div class="click-open-text" onclick="goToScreen('screen-main')">
+                <span>Clique para abrir</span>
+                <i class="fa-solid fa-hand-pointer" style="font-size: 0.9rem;"></i>
             </div>
         </div>
 
-        <!-- PÁGINA 2: CONVITE PRINCIPAL -->
+        <!-- ================= PÁGINA 2: CONVITE PRINCIPAL ================= -->
         <div class="screen" id="screen-main">
-            <div class="roman-xv">XV</div>
-            <div class="roman-anos">anos</div>
+            <div class="header-xv">
+                <h2 class="xv-title">XV</h2>
+                <span class="anos-subtitle">anos</span>
+            </div>
 
-            <h1 class="main-name">Sofia</h1>
+            <p class="bible-quote">"Tudo tem o seu tempo determinado."<br>(Eclesiastes 3:1)</p>
 
-            <p class="invitation-text">
+            <h1 class="name-sofia">Sofia</h1>
+
+            <p class="invitation-body-text">
                 Sofia, um nome que significa sabedoria e graça, celebra um sonho e convida você para fazer parte desse momento.
             </p>
 
-            <div class="date-container">
-                <span class="date-text">Sábado</span>
-                <span class="date-day-number">05</span>
-                <span class="date-text">Setembro<br><small style="font-size: 0.72rem; color: var(--text-muted); text-transform:none;">às 20h00</small></span>
+            <!-- Bloco de Data Exato da Imagem de Referência -->
+            <div class="date-badge-wrapper">
+                <div class="date-day-header">SÁBADO</div>
+                <div class="date-row">
+                    <span class="date-month-year">SETEMBRO</span>
+                    <span class="date-number-box">05</span>
+                    <span class="date-month-year">2026</span>
+                </div>
+                <div class="date-time">19h00</div>
             </div>
 
-            <p class="rsvp-deadline">É imprescindible confirmar presença até dia 20/08.</p>
+            <p class="rsvp-warning">É imprescindível confirmar presença até dia 20/08.</p>
 
-            <!-- Grade de Botões de Ação -->
-            <div class="action-grid">
-                <div class="action-row">
-                    <!-- Confirmar Presença (WhatsApp) -->
-                    <a href="https://wa.me/5551992537196?text=Ol%C3%A1!%20Gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20no%20anivers%C3%A1rio%20de%2015%20anos%20da%20Sofia." target="_blank" class="action-card">
-                        <div class="icon-circle">
-                            <i class="fa-regular fa-calendar-check"></i>
-                        </div>
-                        <span>Confirmar presença</span>
-                    </a>
-
-                    <!-- Localização (Google Maps) -->
-                    <a href="https://www.google.com/maps/place/R.+Dr.+Barcelos,+2434+-+Tristeza,+Porto+Alegre+-+RS,+91910-251/@-30.0968039,-51.2332125,14.74z/data=!4m6!3m5!1s0x95198269bf2675af:0x51b9db561716d04b!8m2!3d-30.1007585!4d-51.2353545!16s%2Fg%2F11c2931s89?entry=ttu&g_ep=EgoyMDI2MDcxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="action-card">
-                        <div class="icon-circle">
-                            <i class="fa-solid fa-map-pin"></i>
-                        </div>
-                        <span>Excelência Eventos</span>
-                    </a>
-                </div>
-
-                <!-- Sugestões de Presente -->
-                <div class="action-card action-card-full" onclick="goToScreen('screen-gifts')">
-                    <div class="icon-circle">
+            <!-- Os 3 Ícones Interativos da Imagem -->
+            <div class="interactive-icons-row">
+                <!-- Ícone 1: Sugestão de Presentes -->
+                <div class="icon-btn-item" onclick="goToScreen('screen-gifts')">
+                    <div class="round-icon-badge">
                         <i class="fa-solid fa-gift"></i>
                     </div>
-                    <span>Sugestões de presentes</span>
+                    <span class="icon-btn-label">Sugestão de Presentes</span>
                 </div>
+
+                <!-- Ícone 2: Confirmar Presença -->
+                <a href="https://wa.me/5551992537196?text=Ol%C3%A1!%20Gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20no%20anivers%C3%A1rio%20de%2015%20anos%20da%20Sofia." target="_blank" class="icon-btn-item">
+                    <div class="round-icon-badge">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <span class="icon-btn-label">Confirmar Presença</span>
+                </a>
+
+                <!-- Ícone 3: Endereço / Mapa -->
+                <a href="https://www.google.com/maps/place/R.+Dr.+Barcelos,+2434+-+Tristeza,+Porto+Alegre+-+RS,+91910-251/@-30.0968039,-51.2332125,14.74z/data=!4m6!3m5!1s0x95198269bf2675af:0x51b9db561716d04b!8m2!3d-30.1007585!4d-51.2353545!16s%2Fg%2F11c2931s89?entry=ttu&g_ep=EgoyMDI2MDcxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="icon-btn-item">
+                    <div class="round-icon-badge">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </div>
+                    <span class="icon-btn-label">Excelência Eventos</span>
+                </a>
             </div>
 
-            <p class="punctual-notice">Seja pontual!</p>
+            <div class="interaction-hint">
+                <i class="fa-solid fa-hand-pointer"></i>
+                <span>Clique nos ícones para interagir.</span>
+            </div>
+
+            <div class="bottom-tag-badge">
+                Seja pontual!
+            </div>
         </div>
 
-        <!-- PÁGINA 3: SUGESTÃO DE PRESENTES -->
+        <!-- ================= PÁGINA 3: LISTA DE PRESENTES ================= -->
         <div class="screen" id="screen-gifts">
-            <h2 class="gift-title">Sugestão de presente</h2>
+            <h2 class="gifts-header-title">Sugestão de presente</h2>
 
-            <div class="gift-list">
+            <div class="gift-cards-container">
                 <!-- Pix -->
-                <div class="gift-item">
-                    <div class="icon-circle">
+                <div class="gift-box-card">
+                    <div class="round-icon-badge">
                         <i class="fa-solid fa-qrcode"></i>
                     </div>
-                    <div class="gift-details">
-                        <span class="gift-name">Pix (Chave CPF)</span>
-                        <span class="gift-sub">CPF: 600.675.520-30</span>
-                        <!-- Botão Vazio PIX -->
-                        <a href="#" id="pix-link-button" class="pix-button-empty" onclick="handlePixClick(event)">
-                            <i class="fa-regular fa-copy"></i>
-                            <span>Copiar / Pagar Pix</span>
+                    <div class="gift-card-info">
+                        <span class="gift-card-title">Pix (Chave CPF)</span>
+                        <span class="gift-card-desc">CPF: 600.675.520-30</span>
+                        <a href="#" id="pix-copy-link" class="copy-pix-btn" onclick="copyPixCode(event)">
+                            <i class="fa-regular fa-copy"></i> Copiar Chave Pix
                         </a>
                     </div>
                 </div>
 
                 <!-- Marvel -->
-                <div class="gift-item">
-                    <div class="icon-circle">
+                <div class="gift-box-card">
+                    <div class="round-icon-badge">
                         <i class="fa-solid fa-mask"></i>
                     </div>
-                    <div class="gift-details">
-                        <span class="gift-name">Produtos da Marvel</span>
-                        <span class="gift-sub">Funko pop, pelúcias, almofadas, camisetas e moletons (M)</span>
+                    <div class="gift-card-info">
+                        <span class="gift-card-title">Produtos da Marvel</span>
+                        <span class="gift-card-desc">Funko pop, pelúcias, almofadas, camisetas e moletons (M)</span>
                     </div>
                 </div>
 
                 <!-- Tênis -->
-                <div class="gift-item">
-                    <div class="icon-circle">
+                <div class="gift-box-card">
+                    <div class="round-icon-badge">
                         <i class="fa-solid fa-shoe-prints"></i>
                     </div>
-                    <div class="gift-details">
-                        <span class="gift-name">Tênis 34/35</span>
-                        <span class="gift-sub">Modelo Samba</span>
+                    <div class="gift-card-info">
+                        <span class="gift-card-title">Tênis 34/35</span>
+                        <span class="gift-card-desc">Modelo Samba</span>
                     </div>
                 </div>
 
                 <!-- Crocs -->
-                <div class="gift-item">
-                    <div class="icon-circle">
+                <div class="gift-box-card">
+                    <div class="round-icon-badge">
                         <i class="fa-solid fa-icons"></i>
                     </div>
-                    <div class="gift-details">
-                        <span class="gift-name">Crocs com pingente</span>
-                        <span class="gift-sub">Tamanho 34/35</span>
+                    <div class="gift-card-info">
+                        <span class="gift-card-title">Crocs com pingente</span>
+                        <span class="gift-card-desc">Tamanho 34/35</span>
                     </div>
                 </div>
 
                 <!-- Perfumaria -->
-                <div class="gift-item">
-                    <div class="icon-circle">
+                <div class="gift-box-card">
+                    <div class="round-icon-badge">
                         <i class="fa-solid fa-spray-can-sparkles"></i>
                     </div>
-                    <div class="gift-details">
-                        <span class="gift-name">Perfumaria</span>
-                        <span class="gift-sub">O Boticário</span>
+                    <div class="gift-card-info">
+                        <span class="gift-card-title">Perfumaria</span>
+                        <span class="gift-card-desc">O Boticário</span>
                     </div>
                 </div>
             </div>
 
-            <button class="back-btn" onclick="goToScreen('screen-main')">
+            <button class="back-nav-btn" onclick="goToScreen('screen-main')">
                 <i class="fa-solid fa-arrow-left"></i> Voltar ao convite
             </button>
         </div>
@@ -602,26 +710,21 @@
     </div>
 
     <script>
-        // Transição entre telas
         function goToScreen(screenId) {
-            const screens = document.querySelectorAll('.screen');
-            screens.forEach(screen => screen.classList.remove('active'));
-            
-            const targetScreen = document.getElementById(screenId);
-            if (targetScreen) {
-                targetScreen.classList.add('active');
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            const target = document.getElementById(screenId);
+            if (target) {
+                target.classList.add('active');
             }
         }
 
-        // Função do Botão Pix
-        function handlePixClick(event) {
-            const button = document.getElementById('pix-link-button');
-            const currentHref = button.getAttribute('href');
-            
-            if (currentHref === '#' || currentHref === '') {
-                event.preventDefault();
+        function copyPixCode(e) {
+            const btn = document.getElementById('pix-copy-link');
+            const href = btn.getAttribute('href');
+            if (href === '#' || href === '') {
+                e.preventDefault();
                 navigator.clipboard.writeText('60067552030');
-                alert('Chave Pix (CPF: 60067552030) copiada para a área de transferência!');
+                alert('Chave Pix (CPF: 60067552030) copiada com sucesso!');
             }
         }
     </script>
