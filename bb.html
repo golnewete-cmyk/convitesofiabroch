@@ -7,20 +7,20 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --primary-purple: #7B429A;
-            --soft-purple: #A870D1;
-            --light-purple: #F3EAF8;
-            --gold-accent: #D4AF37;
-            --gold-light: #F7E7A9;
-            --text-dark: #3A2E39;
-            --text-muted: #6B5E6A;
-            --bg-gradient: linear-gradient(135deg, #FAF7FC 0%, #F1E5F8 50%, #FAF5FF 100%);
+            --rose-gold: #C58B88;
+            --rose-gold-dark: #9E6461;
+            --rose-gold-light: #E8C5C3;
+            --soft-pink-bg: #F9ECEC;
+            --card-bg: #FCF8F8;
+            --text-main: #5C4342;
+            --text-muted: #8A6E6D;
+            --accent-gold: #B8860B;
         }
 
         * {
@@ -32,112 +32,63 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background: var(--bg-gradient);
-            color: var(--text-dark);
+            background-color: #F3E5E5;
+            background-image: radial-gradient(#E5CFCF 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--text-main);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow-x: hidden;
             position: relative;
+            padding: 15px 0;
         }
 
-        /* Ambient Animated Particles / Floating Butterflies */
-        .ambient-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .floating-butterfly {
-            position: absolute;
-            width: 32px;
-            height: 32px;
-            opacity: 0.6;
-            animation: floatAround 12s infinite ease-in-out;
-            filter: drop-shadow(0 4px 6px rgba(123, 66, 154, 0.2));
-        }
-
-        @keyframes floatAround {
-            0% { transform: translate(0, 0) rotate(0deg) scale(0.9); }
-            25% { transform: translate(30px, -40px) rotate(10deg) scale(1.1); }
-            50% { transform: translate(-20px, -80px) rotate(-10deg) scale(1); }
-            75% { transform: translate(25px, -120px) rotate(15deg) scale(1.05); }
-            100% { transform: translate(0, -160px) rotate(0deg) scale(0.9); opacity: 0; }
-        }
-
-        /* Geometric Gold Borders & Floral Elements */
-        .geometric-frame {
-            position: absolute;
-            inset: 12px;
-            border: 1px solid rgba(212, 175, 55, 0.4);
-            pointer-events: none;
-            border-radius: 20px;
-            z-index: 1;
-        }
-
-        .geometric-frame::before {
-            content: '';
-            position: absolute;
-            inset: 6px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 16px;
-        }
-
-        .floral-corner {
-            position: absolute;
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0.85;
-        }
-
-        .floral-top-right {
-            top: -10px;
-            right: -10px;
-            width: 170px;
-            transform: rotate(0deg);
-        }
-
-        .floral-bottom-left {
-            bottom: -10px;
-            left: -10px;
-            width: 170px;
-            transform: rotate(180deg);
-        }
-
-        /* Main Container Frame (Mobile Proportions) */
+        /* Container Principal do Convite (Manequim/Cartão Mobile) */
         .app-container {
             width: 100%;
-            max-width: 440px;
+            max-width: 420px;
             min-height: 100vh;
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            box-shadow: 0 20px 50px rgba(123, 66, 154, 0.15);
+            background: var(--card-bg);
+            box-shadow: 0 15px 40px rgba(158, 100, 97, 0.2);
             position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 30px 20px;
+            border: 1px solid rgba(197, 139, 136, 0.3);
         }
 
-        @media (min-height: 700px) and (min-width: 480px) {
+        @media (min-height: 650px) and (min-width: 450px) {
             .app-container {
-                min-height: 840px;
-                border-radius: 28px;
-                margin: 20px 0;
-                border: 1px solid rgba(255, 255, 255, 0.8);
+                min-height: 800px;
+                border-radius: 20px;
             }
         }
 
-        /* Screen Sections */
+        /* Flores e Elementos Decorativos Fixos estilo Aquarela Rose Gold */
+        .floral-corner {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floral-top-left {
+            top: -10px;
+            left: -10px;
+            width: 180px;
+        }
+
+        .floral-bottom-right {
+            bottom: -10px;
+            right: -10px;
+            width: 180px;
+            transform: rotate(180deg);
+        }
+
+        /* Estrutura das Páginas */
         .screen {
             width: 100%;
             height: 100%;
@@ -151,8 +102,8 @@
             padding: 40px 25px;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: scale(0.95);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            transform: scale(0.97);
             z-index: 2;
             overflow-y: auto;
         }
@@ -164,290 +115,262 @@
             z-index: 3;
         }
 
-        /* COVER SCREEN (Page 1) */
+        /* PÁGINA 1: CAPA (Envelope / Lacre Rose Gold) */
         #screen-cover {
-            background: radial-gradient(circle at center, rgba(255,255,255,0.9) 0%, rgba(243,234,248,0.8) 100%);
+            background: linear-gradient(180deg, #F9EDED 0%, #FAF0F0 100%);
         }
 
-        .cover-title {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3.5rem;
-            color: var(--primary-purple);
-            text-shadow: 0 2px 10px rgba(123, 66, 154, 0.15);
-            margin-bottom: 10px;
+        /* Linha Central do Envelope */
+        .envelope-seam {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 1px;
+            background: rgba(197, 139, 136, 0.3);
+            z-index: 1;
         }
 
-        .cover-subtitle {
+        .cover-monogram-sub {
             font-family: 'Cinzel', serif;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             font-size: 0.85rem;
-            color: var(--gold-accent);
+            color: var(--rose-gold-dark);
             text-transform: uppercase;
-            margin-bottom: 40px;
+            margin-top: 15px;
+            margin-bottom: 35px;
         }
 
+        /* Lacre de Cera Rose Gold */
         .wax-seal-btn {
-            width: 110px;
-            height: 110px;
-            background: linear-gradient(135deg, #8E44AD, #5B2C6F);
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle at 35% 35%, #D8A09D 0%, #B87673 60%, #8C4E4B 100%);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #FFF;
-            box-shadow: 0 10px 25px rgba(91, 44, 111, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 20px rgba(140, 78, 75, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.4);
             cursor: pointer;
             position: relative;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 3px solid rgba(212, 175, 55, 0.6);
-            margin-bottom: 25px;
-            animation: pulseGlow 2.5s infinite ease-in-out;
+            z-index: 4;
+            transition: transform 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            margin-bottom: 30px;
         }
 
         .wax-seal-btn:hover {
-            transform: scale(1.08) rotate(3deg);
-            box-shadow: 0 15px 30px rgba(91, 44, 111, 0.5), inset 0 2px 6px rgba(255, 255, 255, 0.6);
+            transform: scale(1.06);
         }
 
         .wax-seal-inner {
-            width: 86px;
-            height: 86px;
+            width: 78px;
+            height: 78px;
             border-radius: 50%;
-            border: 1.5px dashed rgba(212, 175, 55, 0.8);
+            border: 1.5px dashed rgba(255, 255, 255, 0.7);
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Great Vibes', cursive;
-            font-size: 2.8rem;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 2.5rem;
             color: #FFF;
-            text-shadow: 1px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 10px 25px rgba(91, 44, 111, 0.3), 0 0 0 0 rgba(212, 175, 55, 0.4); }
-            50% { box-shadow: 0 15px 30px rgba(91, 44, 111, 0.5), 0 0 0 14px rgba(212, 175, 55, 0); }
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
         }
 
         .click-hint {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem;
-            color: var(--primary-purple);
+            font-size: 0.9rem;
+            color: var(--rose-gold-dark);
             font-weight: 500;
             display: flex;
             align-items: center;
             gap: 8px;
-            animation: bounce 2s infinite;
+            cursor: pointer;
+            z-index: 4;
+            letter-spacing: 0.5px;
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-8px); }
-            60% { transform: translateY(-4px); }
+        /* PÁGINA 2: CONVITE PRINCIPAL */
+        .roman-xv {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            letter-spacing: 6px;
+            color: var(--rose-gold-dark);
+            line-height: 1;
+            margin-bottom: 2px;
         }
 
-        /* INVITATION MAIN SCREEN (Page 2) */
-        .crown-icon {
-            width: 70px;
-            margin-bottom: 5px;
-            filter: drop-shadow(0 4px 6px rgba(212, 175, 55, 0.3));
+        .roman-anos {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--rose-gold);
+            letter-spacing: 3px;
+            margin-bottom: 12px;
         }
 
         .main-name {
             font-family: 'Great Vibes', cursive;
             font-size: 4rem;
-            color: var(--primary-purple);
-            line-height: 1;
-            margin-bottom: 5px;
-        }
-
-        .age-badge {
-            font-family: 'Cinzel', serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--gold-accent);
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
+            color: var(--rose-gold-dark);
+            line-height: 1.1;
+            margin-bottom: 12px;
+            font-weight: normal;
         }
 
         .invitation-text {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             line-height: 1.6;
             color: var(--text-muted);
-            max-width: 320px;
+            max-width: 310px;
             margin-bottom: 20px;
         }
 
-        .date-box {
+        .date-container {
             width: 100%;
-            background: rgba(255, 255, 255, 0.8);
-            border-top: 1px solid rgba(212, 175, 55, 0.4);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.4);
-            padding: 12px 10px;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 15px;
-            margin-bottom: 25px;
+            margin-bottom: 18px;
+            padding: 10px 0;
+            border-top: 1px solid rgba(197, 139, 136, 0.3);
+            border-bottom: 1px solid rgba(197, 139, 136, 0.3);
         }
 
-        .date-day-name {
+        .date-text {
             font-family: 'Cinzel', serif;
-            font-size: 1.1rem;
-            color: var(--gold-accent);
-            font-weight: 600;
-        }
-
-        .date-number-circle {
-            width: 44px;
-            height: 44px;
-            background: var(--gold-accent);
-            color: #FFF;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Cinzel', serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
-        }
-
-        .date-time {
-            font-family: 'Montserrat', sans-serif;
             font-size: 0.95rem;
-            color: var(--gold-accent);
+            color: var(--rose-gold-dark);
+            letter-spacing: 1px;
             font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .date-day-number {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--rose-gold-dark);
+            padding: 0 10px;
+            border-left: 1px solid var(--rose-gold-light);
+            border-right: 1px solid var(--rose-gold-light);
         }
 
         .rsvp-deadline {
-            font-size: 0.8rem;
-            color: var(--primary-purple);
-            font-weight: 600;
-            margin-bottom: 20px;
+            font-size: 0.78rem;
+            color: var(--rose-gold-dark);
+            font-weight: 500;
+            margin-bottom: 22px;
         }
 
-        /* Action Buttons Grid */
+        /* Grade dos Botões de Ação */
         .action-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
             width: 100%;
-            margin-bottom: 15px;
+            max-width: 310px;
+            margin-bottom: 18px;
+        }
+
+        .action-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
         }
 
         .action-card {
             background: #FFF;
-            border: 1px solid rgba(168, 112, 209, 0.2);
-            border-radius: 16px;
-            padding: 15px 10px;
+            border: 1px solid var(--rose-gold-light);
+            border-radius: 14px;
+            padding: 12px 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             text-decoration: none;
-            color: var(--text-dark);
-            box-shadow: 0 4px 15px rgba(123, 66, 154, 0.06);
-            transition: all 0.3s ease;
+            color: var(--text-main);
+            box-shadow: 0 3px 10px rgba(197, 139, 136, 0.08);
+            transition: all 0.25 ease;
             cursor: pointer;
         }
 
         .action-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(123, 66, 154, 0.15);
-            border-color: var(--soft-purple);
+            transform: translateY(-2px);
+            border-color: var(--rose-gold);
+            box-shadow: 0 6px 15px rgba(197, 139, 136, 0.15);
         }
 
         .icon-circle {
-            width: 48px;
-            height: 48px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
-            background: var(--light-purple);
+            background: var(--soft-pink-bg);
             display: flex;
             justify-content: center;
             align-items: center;
-            color: var(--primary-purple);
-            font-size: 1.2rem;
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--rose-gold-dark);
+            font-size: 1.1rem;
+            border: 1px solid rgba(197, 139, 136, 0.3);
         }
 
         .action-card span {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
-            color: var(--text-dark);
+            color: var(--text-main);
         }
 
         .action-card-full {
-            grid-column: span 2;
             flex-direction: row;
             justify-content: center;
-            gap: 12px;
-            padding: 12px 15px;
+            gap: 10px;
+            padding: 10px 15px;
         }
 
         .punctual-notice {
             font-family: 'Cinzel', serif;
-            font-size: 0.85rem;
-            color: var(--gold-accent);
+            font-size: 0.82rem;
+            color: var(--rose-gold-dark);
+            letter-spacing: 1.5px;
             font-weight: 600;
-            letter-spacing: 1px;
-            margin-top: 5px;
+            text-transform: uppercase;
         }
 
-        /* GIFTS SCREEN (Page 3) */
-        .gift-title-container {
-            margin-bottom: 20px;
-        }
-
+        /* PÁGINA 3: SUGESTÃO DE PRESENTES */
         .gift-title {
             font-family: 'Great Vibes', cursive;
             font-size: 3.2rem;
-            color: var(--primary-purple);
+            color: var(--rose-gold-dark);
+            margin-bottom: 15px;
             line-height: 1;
         }
 
         .gift-list {
             width: 100%;
+            max-width: 330px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
             margin-bottom: 20px;
             max-height: 52vh;
             overflow-y: auto;
-            padding-right: 4px;
+            padding-right: 2px;
         }
 
         .gift-item {
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px solid rgba(168, 112, 209, 0.2);
-            border-radius: 14px;
-            padding: 12px 15px;
+            background: #FFF;
+            border: 1px solid var(--rose-gold-light);
+            border-radius: 12px;
+            padding: 10px 14px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             text-align: left;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-            transition: transform 0.2s ease;
-        }
-
-        .gift-item:hover {
-            transform: scale(1.02);
-            border-color: var(--soft-purple);
-        }
-
-        .gift-icon {
-            width: 42px;
-            height: 42px;
-            min-width: 42px;
-            border-radius: 50%;
-            background: var(--light-purple);
-            color: var(--primary-purple);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.1rem;
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 2px 8px rgba(197, 139, 136, 0.05);
         }
 
         .gift-details {
@@ -457,104 +380,96 @@
         }
 
         .gift-name {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 600;
-            color: var(--text-dark);
+            color: var(--text-main);
         }
 
         .gift-sub {
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             color: var(--text-muted);
             margin-top: 2px;
+            line-height: 1.3;
         }
 
-        /* Empty / Configurable Pix Button */
+        /* Botão Vazio do PIX */
         .pix-button-empty {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: linear-gradient(135deg, #00BDAE, #008B82);
+            gap: 6px;
+            background: var(--rose-gold);
             color: #FFF;
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-size: 0.75rem;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.72rem;
             font-weight: 600;
             text-decoration: none;
             margin-top: 6px;
             width: fit-content;
-            transition: opacity 0.2s;
-            cursor: pointer;
+            transition: background 0.2s;
             border: none;
+            cursor: pointer;
         }
 
         .pix-button-empty:hover {
-            opacity: 0.9;
+            background: var(--rose-gold-dark);
         }
 
         .back-btn {
-            background: linear-gradient(135deg, var(--primary-purple), var(--soft-purple));
+            background: linear-gradient(135deg, var(--rose-gold), var(--rose-gold-dark));
             color: #FFF;
             border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
+            padding: 11px 26px;
+            border-radius: 20px;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(123, 66, 154, 0.3);
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(158, 100, 97, 0.25);
             display: flex;
             align-items: center;
             gap: 8px;
+            letter-spacing: 0.5px;
         }
 
         .back-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(123, 66, 154, 0.4);
-        }
-
-        /* SVG Crown Inline */
-        .crown-svg {
-            width: 80px;
-            height: auto;
-            fill: url(#goldGradient);
+            opacity: 0.95;
         }
     </style>
 </head>
 <body>
 
-    <!-- Ambient Butterfly Layer -->
-    <div class="ambient-bg" id="butterfly-container"></div>
-
-    <!-- Main Mobile Shell -->
+    <!-- Container Principal (Convite) -->
     <div class="app-container">
         
-        <!-- Geometric Frame -->
-        <div class="geometric-frame"></div>
-
-        <!-- Watercolor Floral Corners (SVG Vectors) -->
-        <svg class="floral-corner floral-top-right" viewBox="0 0 200 200" fill="none">
-            <path d="M150,20 C180,50 190,100 170,140 C150,180 100,190 60,170" stroke="#A870D1" stroke-width="2" opacity="0.3"/>
-            <circle cx="160" cy="40" r="25" fill="#E8D5F5" opacity="0.6"/>
-            <circle cx="130" cy="30" r="18" fill="#7B429A" opacity="0.3"/>
-            <circle cx="170" cy="80" r="15" fill="#D4AF37" opacity="0.4"/>
+        <!-- Ilustrações Florais em Aquarela Rose (Substituindo ícones/borboletas animadas) -->
+        <svg class="floral-corner floral-top-left" viewBox="0 0 200 200" fill="none">
+            <!-- Flores e folhas aquarela estilizadas em tons Rose/Dusty Pink -->
+            <path d="M10 10 Q 60 20, 90 60 Q 40 80, 10 10 Z" fill="#E8C5C3" opacity="0.6"/>
+            <path d="M40 0 Q 80 40, 70 90 Q 20 60, 40 0 Z" fill="#D8A09D" opacity="0.5"/>
+            <circle cx="30" cy="30" r="25" fill="#C58B88" opacity="0.4"/>
+            <circle cx="60" cy="20" r="18" fill="#E8C5C3" opacity="0.7"/>
+            <circle cx="20" cy="60" r="20" fill="#B87673" opacity="0.3"/>
+            <path d="M70 70 C 100 100, 130 80, 140 50" stroke="#9E6461" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.5"/>
         </svg>
 
-        <svg class="floral-corner floral-bottom-left" viewBox="0 0 200 200" fill="none">
-            <path d="M150,20 C180,50 190,100 170,140 C150,180 100,190 60,170" stroke="#A870D1" stroke-width="2" opacity="0.3"/>
-            <circle cx="160" cy="40" r="25" fill="#E8D5F5" opacity="0.6"/>
-            <circle cx="130" cy="30" r="18" fill="#7B429A" opacity="0.3"/>
-            <circle cx="170" cy="80" r="15" fill="#D4AF37" opacity="0.4"/>
+        <svg class="floral-corner floral-bottom-right" viewBox="0 0 200 200" fill="none">
+            <path d="M10 10 Q 60 20, 90 60 Q 40 80, 10 10 Z" fill="#E8C5C3" opacity="0.6"/>
+            <path d="M40 0 Q 80 40, 70 90 Q 20 60, 40 0 Z" fill="#D8A09D" opacity="0.5"/>
+            <circle cx="30" cy="30" r="25" fill="#C58B88" opacity="0.4"/>
+            <circle cx="60" cy="20" r="18" fill="#E8C5C3" opacity="0.7"/>
+            <circle cx="20" cy="60" r="20" fill="#B87673" opacity="0.3"/>
+            <path d="M70 70 C 100 100, 130 80, 140 50" stroke="#9E6461" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.5"/>
         </svg>
 
-        <!-- PAGE 1: COVER SCREEN -->
+        <!-- PÁGINA 1: CAPA COM LACRE -->
         <div class="screen active" id="screen-cover">
-            <h2 class="cover-title">Sofia</h2>
-            <p class="cover-subtitle">15 Anos</p>
-            
+            <div class="envelope-seam"></div>
+
             <div class="wax-seal-btn" onclick="goToScreen('screen-main')">
                 <div class="wax-seal-inner">S</div>
             </div>
+
+            <div class="cover-monogram-sub">Sofia</div>
 
             <div class="click-hint" onclick="goToScreen('screen-main')">
                 <span>Clique aqui</span>
@@ -562,57 +477,46 @@
             </div>
         </div>
 
-        <!-- PAGE 2: INVITATION MAIN SCREEN -->
+        <!-- PÁGINA 2: CONVITE PRINCIPAL -->
         <div class="screen" id="screen-main">
-            <!-- Crown Vector -->
-            <svg class="crown-svg" viewBox="0 0 100 60">
-                <defs>
-                    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#F7E7A9" />
-                        <stop offset="50%" stop-color="#D4AF37" />
-                        <stop offset="100%" stop-color="#AA820A" />
-                    </linearGradient>
-                </defs>
-                <path d="M10 50 L20 20 L40 35 L50 10 L60 35 L80 20 L90 50 Z" stroke="#D4AF37" stroke-width="2" />
-                <circle cx="10" cy="18" r="3" />
-                <circle cx="50" cy="8" r="4" />
-                <circle cx="90" cy="18" r="3" />
-            </svg>
+            <div class="roman-xv">XV</div>
+            <div class="roman-anos">anos</div>
 
             <h1 class="main-name">Sofia</h1>
-            <div class="age-badge">15 Anos</div>
 
             <p class="invitation-text">
-                Sofia, um nome que significa sabedoria e graça, celebra um sonho e convida você para fazer parte desse momento especial.
+                Sofia, um nome que significa sabedoria e graça, celebra um sonho e convida você para fazer parte desse momento.
             </p>
 
-            <div class="date-box">
-                <span class="date-day-name">Sábado</span>
-                <div class="date-number-circle">05</div>
-                <span class="date-time">Setembro<br><small style="font-size:0.8rem; color:var(--text-dark);">às 20h00</small></span>
+            <div class="date-container">
+                <span class="date-text">Sábado</span>
+                <span class="date-day-number">05</span>
+                <span class="date-text">Setembro<br><small style="font-size: 0.72rem; color: var(--text-muted); text-transform:none;">às 20h00</small></span>
             </div>
 
-            <p class="rsvp-deadline">É imprescindível confirmar presença até dia 20/08.</p>
+            <p class="rsvp-deadline">É imprescindible confirmar presença até dia 20/08.</p>
 
-            <!-- Buttons Grid -->
+            <!-- Grade de Botões de Ação -->
             <div class="action-grid">
-                <!-- Confirmar Presença (WhatsApp) -->
-                <a href="https://wa.me/5551992537196?text=Ol%C3%A1!%20Gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20no%20anivers%C3%A1rio%20de%2015%20anos%20da%20Sofia." target="_blank" class="action-card">
-                    <div class="icon-circle">
-                        <i class="fa-solid fa-clipboard-check"></i>
-                    </div>
-                    <span>Confirmar presença</span>
-                </a>
+                <div class="action-row">
+                    <!-- Confirmar Presença (WhatsApp) -->
+                    <a href="https://wa.me/5551992537196?text=Ol%C3%A1!%20Gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20no%20anivers%C3%A1rio%20de%2015%20anos%20da%20Sofia." target="_blank" class="action-card">
+                        <div class="icon-circle">
+                            <i class="fa-regular fa-calendar-check"></i>
+                        </div>
+                        <span>Confirmar presença</span>
+                    </a>
 
-                <!-- Localização (Google Maps) -->
-                <a href="https://www.google.com/maps/place/R.+Dr.+Barcelos,+2434+-+Tristeza,+Porto+Alegre+-+RS,+91910-251/@-30.0968039,-51.2332125,14.74z/data=!4m6!3m5!1s0x95198269bf2675af:0x51b9db561716d04b!8m2!3d-30.1007585!4d-51.2353545!16s%2Fg%2F11c2931s89?entry=ttu&g_ep=EgoyMDI2MDcxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="action-card">
-                    <div class="icon-circle">
-                        <i class="fa-solid fa-location-dot"></i>
-                    </div>
-                    <span>Excelência Eventos</span>
-                </a>
+                    <!-- Localização (Google Maps) -->
+                    <a href="https://www.google.com/maps/place/R.+Dr.+Barcelos,+2434+-+Tristeza,+Porto+Alegre+-+RS,+91910-251/@-30.0968039,-51.2332125,14.74z/data=!4m6!3m5!1s0x95198269bf2675af:0x51b9db561716d04b!8m2!3d-30.1007585!4d-51.2353545!16s%2Fg%2F11c2931s89?entry=ttu&g_ep=EgoyMDI2MDcxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="action-card">
+                        <div class="icon-circle">
+                            <i class="fa-solid fa-map-pin"></i>
+                        </div>
+                        <span>Excelência Eventos</span>
+                    </a>
+                </div>
 
-                <!-- Sugestões de Presentes (Triggers Screen 3) -->
+                <!-- Sugestões de Presente -->
                 <div class="action-card action-card-full" onclick="goToScreen('screen-gifts')">
                     <div class="icon-circle">
                         <i class="fa-solid fa-gift"></i>
@@ -624,58 +528,52 @@
             <p class="punctual-notice">Seja pontual!</p>
         </div>
 
-        <!-- PAGE 3: GIFTS SCREEN -->
+        <!-- PÁGINA 3: SUGESTÃO DE PRESENTES -->
         <div class="screen" id="screen-gifts">
-            <div class="gift-title-container">
-                <!-- Crown Vector Small -->
-                <svg class="crown-svg" style="width:50px;" viewBox="0 0 100 60">
-                    <path d="M10 50 L20 20 L40 35 L50 10 L60 35 L80 20 L90 50 Z" stroke="#D4AF37" stroke-width="2" />
-                </svg>
-                <h2 class="gift-title">Sugestão de presente</h2>
-            </div>
+            <h2 class="gift-title">Sugestão de presente</h2>
 
             <div class="gift-list">
-                <!-- PIX Item (With customizable empty button for future link) -->
+                <!-- Pix -->
                 <div class="gift-item">
-                    <div class="gift-icon">
-                        <i class="fa-solid fa-pix"></i>
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-qrcode"></i>
                     </div>
                     <div class="gift-details">
-                        <span class="gift-name">Pix (Chave CPF / Link)</span>
+                        <span class="gift-name">Pix (Chave CPF)</span>
                         <span class="gift-sub">CPF: 600.675.520-30</span>
-                        <!-- Botão Vazio para futuro link do PIX -->
+                        <!-- Botão Vazio PIX -->
                         <a href="#" id="pix-link-button" class="pix-button-empty" onclick="handlePixClick(event)">
-                            <i class="fa-solid fa-qrcode"></i>
-                            <span>Copiar / Pagar via Pix</span>
+                            <i class="fa-regular fa-copy"></i>
+                            <span>Copiar / Pagar Pix</span>
                         </a>
                     </div>
                 </div>
 
                 <!-- Marvel -->
                 <div class="gift-item">
-                    <div class="gift-icon">
+                    <div class="icon-circle">
                         <i class="fa-solid fa-mask"></i>
                     </div>
                     <div class="gift-details">
                         <span class="gift-name">Produtos da Marvel</span>
-                        <span class="gift-sub">Funko pop, pelúcias, almofadas, camisetas e moletons (Tamanho M)</span>
+                        <span class="gift-sub">Funko pop, pelúcias, almofadas, camisetas e moletons (M)</span>
                     </div>
                 </div>
 
                 <!-- Tênis -->
                 <div class="gift-item">
-                    <div class="gift-icon">
+                    <div class="icon-circle">
                         <i class="fa-solid fa-shoe-prints"></i>
                     </div>
                     <div class="gift-details">
-                        <span class="gift-name">Tênis (Tam 34/35)</span>
+                        <span class="gift-name">Tênis 34/35</span>
                         <span class="gift-sub">Modelo Samba</span>
                     </div>
                 </div>
 
                 <!-- Crocs -->
                 <div class="gift-item">
-                    <div class="gift-icon">
+                    <div class="icon-circle">
                         <i class="fa-solid fa-icons"></i>
                     </div>
                     <div class="gift-details">
@@ -686,7 +584,7 @@
 
                 <!-- Perfumaria -->
                 <div class="gift-item">
-                    <div class="gift-icon">
+                    <div class="icon-circle">
                         <i class="fa-solid fa-spray-can-sparkles"></i>
                     </div>
                     <div class="gift-details">
@@ -704,7 +602,7 @@
     </div>
 
     <script>
-        // Screen Navigation Logic
+        // Transição entre telas
         function goToScreen(screenId) {
             const screens = document.querySelectorAll('.screen');
             screens.forEach(screen => screen.classList.remove('active'));
@@ -715,7 +613,7 @@
             }
         }
 
-        // Pix Button Handler (Place holder notification if no link configured yet)
+        // Função do Botão Pix
         function handlePixClick(event) {
             const button = document.getElementById('pix-link-button');
             const currentHref = button.getAttribute('href');
@@ -726,25 +624,6 @@
                 alert('Chave Pix (CPF: 60067552030) copiada para a área de transferência!');
             }
         }
-
-        // Dynamic Floating Butterflies Generator
-        function createButterflies() {
-            const container = document.getElementById('butterfly-container');
-            const butterflySvg = `<svg viewBox="0 0 24 24" fill="#A870D1"><path d="M12,2C12,2 9,7 4,6C-1,5 0,12 3,14C6,16 9,13 12,18C15,13 18,16 21,14C24,12 25,5 20,6C15,7 12,2 12,2Z"/></svg>`;
-            
-            for (let i = 0; i < 8; i++) {
-                const b = document.createElement('div');
-                b.className = 'floating-butterfly';
-                b.innerHTML = butterflySvg;
-                b.style.left = Math.random() * 100 + '%';
-                b.style.top = (Math.random() * 80 + 20) + '%';
-                b.style.animationDelay = (Math.random() * 8) + 's';
-                b.style.animationDuration = (10 + Math.random() * 8) + 's';
-                container.appendChild(b);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', createButterflies);
     </script>
 </body>
 </html>
