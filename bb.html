@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Convite 15 Anos - Sofia</title>
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -18,7 +16,6 @@
             --rose-dark: #935B5B;
             --rose-text: #824B4B;
             --card-white: #FCF9F9;
-            --gold-subtle: #D4AF37;
         }
 
         * {
@@ -41,7 +38,6 @@
             padding: 20px 10px;
         }
 
-        /* Container principal estilo Cartão Físico */
         .card-container {
             width: 100%;
             max-width: 410px;
@@ -56,14 +52,12 @@
             flex-direction: column;
         }
 
-        /* SVG Floral Reutilizável de Alta Fidelidade (Ramos de flores rosas em tom pastel) */
         .floral-svg {
             position: absolute;
             pointer-events: none;
             z-index: 2;
         }
 
-        /* Telas */
         .screen {
             width: 100%;
             height: 100%;
@@ -89,7 +83,7 @@
             z-index: 5;
         }
 
-        /* ================= PÁGINA 1: ENVELOPE (CAPA) ================= */
+        /* PÁGINA 1: CAPA */
         #screen-cover {
             background-color: #F5E5E4;
             background-image: 
@@ -99,7 +93,6 @@
             justify-content: center;
         }
 
-        /* Marca d'água da Monograma "S" no envelope */
         .watermark-monogram {
             position: absolute;
             bottom: 40px;
@@ -113,18 +106,16 @@
             z-index: 1;
         }
 
-        /* Linha central do envelope de duas abas */
         .envelope-center-line {
             position: absolute;
             top: 0;
             bottom: 0;
             left: 50%;
             width: 1px;
-            background: linear-gradient(to bottom, rgba(196,139,139,0.1), rgba(196,139,139,0.4), rgba(196,139,139,0.1));
+            background: linear-gradient(to bottom, rgba(196, 139, 139, 0.1), rgba(196, 139, 139, 0.4), rgba(196, 139, 139, 0.1));
             z-index: 2;
         }
 
-        /* Lacre de Cera com texto circular */
         .wax-seal-wrapper {
             position: relative;
             z-index: 10;
@@ -140,7 +131,6 @@
             position: absolute;
             width: 160px;
             height: 160px;
-            animation: rotateText 20s linear infinite;
             pointer-events: none;
         }
 
@@ -151,11 +141,6 @@
             letter-spacing: 2px;
             font-weight: 500;
             text-transform: lowercase;
-        }
-
-        @keyframes rotateText {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
         }
 
         .wax-seal-3d {
@@ -198,7 +183,7 @@
             text-transform: uppercase;
         }
 
-        /* ================= PÁGINA 2: CONVITE PRINCIPAL ================= */
+        /* PÁGINA 2: CONVITE */
         #screen-main {
             background-color: var(--card-white);
             background-image: radial-gradient(rgba(196,139,139,0.06) 1px, transparent 0);
@@ -260,7 +245,6 @@
             margin-bottom: 8px;
         }
 
-        /* Bloco de Data Fiel à foto */
         .date-badge-wrapper {
             width: 100%;
             max-width: 310px;
@@ -330,7 +314,6 @@
             margin: 6px 0 10px;
         }
 
-        /* Fileira dos 3 Ícones Circulares estilo Foto */
         .interactive-icons-row {
             display: flex;
             justify-content: space-between;
@@ -369,7 +352,6 @@
             color: var(--rose-dark);
             font-size: 1.25rem;
             margin-bottom: 8px;
-            position: relative;
         }
 
         .icon-btn-label {
@@ -392,7 +374,6 @@
             margin-top: 10px;
         }
 
-        /* Badge do Traje / Pontualidade */
         .bottom-tag-badge {
             margin-top: auto;
             margin-bottom: 5px;
@@ -408,7 +389,7 @@
             text-transform: uppercase;
         }
 
-        /* ================= PÁGINA 3: LISTA DE PRESENTES ================= */
+        /* PÁGINA 3: PRESENTES */
         #screen-gifts {
             background-color: var(--card-white);
             justify-content: flex-start;
@@ -431,7 +412,6 @@
             gap: 10px;
             max-height: 54vh;
             overflow-y: auto;
-            padding-right: 4px;
         }
 
         .gift-box-card {
@@ -470,7 +450,6 @@
             font-size: 0.73rem;
             color: #8C6262;
             margin-top: 2px;
-            line-height: 1.3;
         }
 
         .copy-pix-btn {
@@ -512,28 +491,22 @@
 
     <div class="card-container">
 
-        <!-- SVG FLORAL 1: Canto Superior Esquerdo (Flores Rosa Aquarela estilo Imagem) -->
         <svg class="floral-svg" style="top:-5px; left:-5px; width:210px; height:210px;" viewBox="0 0 200 200">
             <g opacity="0.85">
-                <!-- Folhas verdes suaves -->
                 <path d="M 30,80 C 10,60 5,30 40,20 C 50,40 40,70 30,80 Z" fill="#90A48A" opacity="0.6"/>
                 <path d="M 80,30 C 60,10 30,5 20,40 C 40,50 70,40 80,30 Z" fill="#A5B8A0" opacity="0.5"/>
-                <!-- Flor Principal Grande -->
                 <circle cx="55" cy="55" r="32" fill="#E8C2C0" opacity="0.7"/>
                 <circle cx="50" cy="50" r="26" fill="#DFAEB0" opacity="0.8"/>
                 <circle cx="52" cy="52" r="18" fill="#C48B8B" opacity="0.9"/>
                 <circle cx="52" cy="52" r="8" fill="#824B4B" opacity="0.8"/>
-                <!-- Pétalas externas estendidas -->
                 <path d="M 55,20 C 75,5 95,20 85,45 C 70,35 60,25 55,20 Z" fill="#F0D2D0"/>
                 <path d="M 20,55 C 5,75 20,95 45,85 C 35,70 25,60 20,55 Z" fill="#E8C2C0"/>
-                <!-- Botões secundários -->
                 <circle cx="105" cy="30" r="14" fill="#E8C2C0"/>
                 <circle cx="105" cy="30" r="8" fill="#C48B8B"/>
                 <circle cx="30" cy="105" r="12" fill="#DFAEB0"/>
             </g>
         </svg>
 
-        <!-- SVG FLORAL 2: Canto Inferior Direito -->
         <svg class="floral-svg" style="bottom:-5px; right:-5px; width:200px; height:200px; transform: rotate(180deg);" viewBox="0 0 200 200">
             <g opacity="0.85">
                 <path d="M 30,80 C 10,60 5,30 40,20 C 50,40 40,70 30,80 Z" fill="#90A48A" opacity="0.6"/>
@@ -545,13 +518,10 @@
             </g>
         </svg>
 
-        <!-- ================= PÁGINA 1: CAPA COM LACRE ================= -->
         <div class="screen active" id="screen-cover">
-            <!-- Marca d'água Monograma -->
             <div class="watermark-monogram">S</div>
             <div class="envelope-center-line"></div>
 
-            <!-- Lacre de cera com texto circular em curva -->
             <div class="wax-seal-wrapper" onclick="goToScreen('screen-main')">
                 <svg class="seal-curved-text" viewBox="0 0 160 160">
                     <path id="textPath" d="M 80, 80 m -60, 0 a 60,60 0 1,1 120,0 a 60,60 0 1,1 -120,0" fill="none"/>
@@ -573,7 +543,6 @@
             </div>
         </div>
 
-        <!-- ================= PÁGINA 2: CONVITE PRINCIPAL ================= -->
         <div class="screen" id="screen-main">
             <div class="header-xv">
                 <h2 class="xv-title">XV</h2>
@@ -588,7 +557,6 @@
                 Sofia, um nome que significa sabedoria e graça, celebra um sonho e convida você para fazer parte desse momento.
             </p>
 
-            <!-- Bloco de Data Exato da Imagem de Referência -->
             <div class="date-badge-wrapper">
                 <div class="date-day-header">SÁBADO</div>
                 <div class="date-row">
@@ -601,9 +569,7 @@
 
             <p class="rsvp-warning">É imprescindível confirmar presença até dia 20/08.</p>
 
-            <!-- Os 3 Ícones Interativos da Imagem -->
             <div class="interactive-icons-row">
-                <!-- Ícone 1: Sugestão de Presentes -->
                 <div class="icon-btn-item" onclick="goToScreen('screen-gifts')">
                     <div class="round-icon-badge">
                         <i class="fa-solid fa-gift"></i>
@@ -611,7 +577,6 @@
                     <span class="icon-btn-label">Sugestão de Presentes</span>
                 </div>
 
-                <!-- Ícone 2: Confirmar Presença -->
                 <a href="https://wa.me/5551992537196?text=Ol%C3%A1!%20Gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20no%20anivers%C3%A1rio%20de%2015%20anos%20da%20Sofia." target="_blank" class="icon-btn-item">
                     <div class="round-icon-badge">
                         <i class="fa-regular fa-heart"></i>
@@ -619,7 +584,6 @@
                     <span class="icon-btn-label">Confirmar Presença</span>
                 </a>
 
-                <!-- Ícone 3: Endereço / Mapa -->
                 <a href="https://www.google.com/maps/place/R.+Dr.+Barcelos,+2434+-+Tristeza,+Porto+Alegre+-+RS,+91910-251/@-30.0968039,-51.2332125,14.74z/data=!4m6!3m5!1s0x95198269bf2675af:0x51b9db561716d04b!8m2!3d-30.1007585!4d-51.2353545!16s%2Fg%2F11c2931s89?entry=ttu&g_ep=EgoyMDI2MDcxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="icon-btn-item">
                     <div class="round-icon-badge">
                         <i class="fa-solid fa-map-location-dot"></i>
@@ -638,12 +602,10 @@
             </div>
         </div>
 
-        <!-- ================= PÁGINA 3: LISTA DE PRESENTES ================= -->
         <div class="screen" id="screen-gifts">
             <h2 class="gifts-header-title">Sugestão de presente</h2>
 
             <div class="gift-cards-container">
-                <!-- Pix -->
                 <div class="gift-box-card">
                     <div class="round-icon-badge">
                         <i class="fa-solid fa-qrcode"></i>
@@ -657,7 +619,6 @@
                     </div>
                 </div>
 
-                <!-- Marvel -->
                 <div class="gift-box-card">
                     <div class="round-icon-badge">
                         <i class="fa-solid fa-mask"></i>
@@ -668,7 +629,6 @@
                     </div>
                 </div>
 
-                <!-- Tênis -->
                 <div class="gift-box-card">
                     <div class="round-icon-badge">
                         <i class="fa-solid fa-shoe-prints"></i>
@@ -679,7 +639,6 @@
                     </div>
                 </div>
 
-                <!-- Crocs -->
                 <div class="gift-box-card">
                     <div class="round-icon-badge">
                         <i class="fa-solid fa-icons"></i>
@@ -690,7 +649,6 @@
                     </div>
                 </div>
 
-                <!-- Perfumaria -->
                 <div class="gift-box-card">
                     <div class="round-icon-badge">
                         <i class="fa-solid fa-spray-can-sparkles"></i>
